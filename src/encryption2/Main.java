@@ -123,41 +123,6 @@ public class Main {
         }
     }
 
-    public static void main(String[] args) {
-        Scanner inputScanner = new Scanner(System.in);
-        boolean encryptMore = true;
-
-        while (encryptMore) {
-            String inputFileName;
-            String outputFileName;
-
-            // Ask for input file until a valid file is entered
-            while (true) {
-                System.out.print("Enter input file name: ");
-                inputFileName = inputScanner.nextLine();
-                File inputFile = new File(inputFileName);
-                if (inputFile.exists()) {
-                    break;
-                } else {
-                    System.out.println("File not found. Please try again.");
-                }
-            }
-
-            // Ask for output file name
-            System.out.print("Enter output file name: ");
-            outputFileName = inputScanner.nextLine();
-
-            // Process the input file and write the output
-            processFile(inputFileName, outputFileName);
-
-            // Ask if the user wants to encrypt more files
-            System.out.print("Would you like to encrypt more text (yes/no)? ");
-            String response = inputScanner.nextLine().toLowerCase();
-            encryptMore = response.equals("yes");
-        }
-
-        inputScanner.close();
-    }
-}
+  
 
 
