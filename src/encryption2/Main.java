@@ -48,10 +48,11 @@ public class Main {
             char letter = word.charAt(0);
             if (letter == 'z') {
                 return prefix + "a" + suffix;
-            }
+        }
+          
             return prefix + String.valueOf((char) (letter + 1)) + suffix;
         }
-
+        // Counting even and odd letters in the word
         int evenLetters = 0;
         int oddLetters = 0;
         for (char letter : word.toCharArray()) {
@@ -61,22 +62,22 @@ public class Main {
                 oddLetters++;
             }
         }
-
+        // If the word contains at least 2 even letters, swap adjacent letters in pairs
         if (evenLetters >= 2) {
             return prefix + swapPairs(word) + suffix;
         }
-
+        // If the word contains at least 3 odd letters, swap the first and last letters
         if (oddLetters >= 3) {
             return prefix + swapFirstAndLast(word) + suffix;
         }
 
         return prefix + word + suffix;
-    }
+    	}
 
     private static boolean isEvenLetter(char letter) {
         int position = letter - 'a' + 1;
         return position % 2 == 0;
-    }
+    	}
 
     private static String swapPairs(String word) {
         StringBuilder swapped = new StringBuilder(word);
@@ -86,7 +87,7 @@ public class Main {
             swapped.setCharAt(i + 1, temp);
         }
         return swapped.toString();
-    }
+    	}
 
     private static String swapFirstAndLast(String word) {
         if (word.length() <= 1) return word;
@@ -96,9 +97,9 @@ public class Main {
         swapped.setCharAt(0, last);
         swapped.setCharAt(word.length() - 1, first);
         return swapped.toString();
-    }
+    	}
 
-    // Method to process the file (read from input, write to output)
+    // processing the file (read from input, write to output)
     public static void processFile(String inputFileName, String outputFileName) {
         try (Scanner fileReader = new Scanner(new File(inputFileName));
              FileWriter fileWriter = new FileWriter(outputFileName)) {
@@ -110,11 +111,11 @@ public class Main {
 
                 for (String word : words) {
                     encryptedLine.append(encryptWord(word)).append(" ");
-                }
+        }
 
                 fileWriter.write(encryptedLine.toString().trim() + System.lineSeparator());
-            }
-
+        }
+          //  file not found exception
         } catch (FileNotFoundException e) {
             System.out.println("File not found. Please try again.");
         } catch (IOException e) {
